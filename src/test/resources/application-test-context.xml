@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					   http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/context
+       					   http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+    <context:component-scan base-package="com.boomerang.careers">
+        <context:include-filter type="annotation" expression="javax.ws.rs.ext.Provider"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+    <context:annotation-config/>
+    <context:property-placeholder location="classpath:application-test.properties"/>
+
+
+    <!-- Spring Data -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="${careers.data.url}"/>
+        <property name="username" value="${careers.data.user}"/>
+        <property name="password" value="${careers.data.pass}"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+</beans>
