@@ -1,0 +1,33 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout-title">OpenCareers</span>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">OpenCareers Directory</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link">
+        {{#link-to 'home'}}Home{{/link-to}}
+      </a>
+      <a class="mdl-navigation__link">
+        {{#link-to 'listings'}}Listings{{/link-to}}
+      </a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      {{outlet}}
+    </div>
+  </main>
+</div>
+<footer class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">OpenCareers</div>
+    <ul class="mdl-mini-footer__link-list">
+      <li>{{#link-to 'about'}}About{{/link-to}}</li>
+      <li>Privacy & Terms</li>
+    </ul>
+  </div>
+</footer>
