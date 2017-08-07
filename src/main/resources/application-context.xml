@@ -12,7 +12,17 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
     <context:annotation-config/>
-    <context:property-placeholder location="classpath:application.properties"/>
+
+    <!-- Properties -->
+    <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+                <value>classpath:sql.properties</value>
+            </list>
+        </property>
+    </bean>
 
     <!-- Spring Data -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

@@ -4,9 +4,11 @@ import com.boomerang.careers.binding.CareerEntity;
 import com.boomerang.careers.binding.CareerPacket;
 import com.boomerang.careers.binding.JobEntity;
 import com.boomerang.careers.data.JobBean;
+import com.boomerang.careers.service.CacheService;
 import com.boomerang.careers.service.CareerService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
@@ -21,6 +23,12 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     CareerService careerService;
+
+    @Autowired
+    CacheService cacheService;
+
+    @Value("${careers.app.secret}")
+    String appSecret;
 
     @Test( groups = { "universal" }, priority = 0)
     public void testPing() {
@@ -39,7 +47,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(passing, true);
     }
 
-    @Test( groups = { "off" }, priority = 1)
+    @Test( groups = { "central" }, priority = 2)
     public void testFindAll() {
         LOG.info("Testing findAll()");
         boolean passing;
@@ -75,20 +83,20 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(passing, true);
     }
 
-    @Test( groups = { "off" }, priority = 1)
+    @Test( groups = { "central" }, priority = 1)
     public void testSaveNew() {
         LOG.info("Testing save() for new record");
         boolean passing;
 
         JobBean jobBean = new JobBean();
-        jobBean.setCompany("Google (test)");
-        jobBean.setTitle("Googler (test)");
-        jobBean.setSalary("$15.00/hr.");
-        jobBean.setRef("google.com");
-        jobBean.setLocation("Mountain View, CA");
-        jobBean.setGlass("glassdoor.com");
-        jobBean.setLinkedin("linkedin.com");
-        jobBean.setNotes("This is a test");
+        jobBean.setCompany("Science Lab");
+        jobBean.setTitle("Researcher");
+        jobBean.setSalary("$72,000/yr.");
+        jobBean.setRef("www.google.com");
+        jobBean.setLocation("Boise, ID");
+        jobBean.setGlass("www.glassdoor.com");
+        jobBean.setLinkedin("www.linkedin.com");
+        jobBean.setNotes("Research plant biology in state-of-the-art facility.");
         CareerPacket request = new CareerEntity();
 
         request.push(new JobEntity(jobBean));
@@ -97,6 +105,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
             Response response = careerService.save(request.serialize());
             LOG.info(String.format("Response:\n%s",
                     response.getEntity()));
+            // cacheService.persist("{\"secret\": \"careers-909im%1t\"}");
             passing = true;
         } catch (Exception e) {
             LOG.error(e);

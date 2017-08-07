@@ -7,3 +7,4 @@ application*.properties
 /bower_components/
 /dist/
 /projectFilesBackup*/
+/json/

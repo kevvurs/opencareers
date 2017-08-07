@@ -22,22 +22,22 @@ public class JobDao {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @Value("${careers.data.insert}")
+    @Value("${careers.sql.insert}")
     String dataInsert;
 
-    @Value("${careers.data.update}")
+    @Value("${careers.sql.update}")
     String dataUpdate;
 
-    @Value("${careers.data.select}")
+    @Value("${careers.sql.select}")
     String dataSelect;
 
-    @Value("${careers.data.query}")
+    @Value("${careers.sql.query}")
     String dataQuery;
 
-    @Value("${careers.data.find}")
+    @Value("${careers.sql.find}")
     String dataFind;
 
-    @Value("${careers.data.delete}")
+    @Value("${careers.sql.delete}")
     String dataDelete;
 
     public JobDao() {

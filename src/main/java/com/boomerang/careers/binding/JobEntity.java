@@ -44,7 +44,9 @@ public class JobEntity {
 
     public JobBean toBean() {
         JobBean jobBean = new JobBean();
-        jobBean.setId(Integer.parseInt(this.id));
+        if (!(this.id == null || this.id.equalsIgnoreCase("null"))){
+            jobBean.setId(Integer.parseInt(this.id));
+        }
         jobBean.setCompany(this.attributes.getCompany());
         jobBean.setLocation(this.attributes.getLocation());
         jobBean.setTitle(this.attributes.getTitle());

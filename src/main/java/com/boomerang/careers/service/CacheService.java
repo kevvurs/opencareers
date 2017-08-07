@@ -9,6 +9,7 @@ import com.google.gson.JsonSyntaxException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Path("/cache")
+@Component
 public class CacheService {
     private static final Logger LOG = Logger.getLogger(CacheService.class.getName());
     private static final Gson GSON = new GsonBuilder().create();
