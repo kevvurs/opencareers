@@ -6,6 +6,7 @@ import com.boomerang.careers.binding.CareerEntities;
 import com.boomerang.careers.binding.JobEntity;
 import com.boomerang.careers.data.JobBean;
 import com.boomerang.careers.data.JobDao;
+import com.boomerang.careers.data.JobRepo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,9 @@ public class CareerService implements EmberService{
 
     @Autowired
     JobDao jobDao;
+
+    @Autowired
+    JobRepo jobRepo;
 
     public CareerService() {
         LOG.info("careerService instantiated");
@@ -43,7 +47,7 @@ public class CareerService implements EmberService{
         CareerPacket response = new CareerEntities();
         Response.Status status;
         try {
-            for (JobBean jobBean : jobDao.fetchAllJobs()) {
+            for (JobBean jobBean : jobRepo.deliverAll()) {
                 response.push(new JobEntity(jobBean));
             }
             status = Response.Status.OK;
@@ -63,7 +67,7 @@ public class CareerService implements EmberService{
         Response.Status status;
         try {
             int jobId = Integer.valueOf(id);
-            response.push(new JobEntity(jobDao.fetchJob(jobId)));
+            response.push(new JobEntity(jobRepo.deliverJob(jobId)));
             status = Response.Status.OK;
         } catch (Exception e) {
             LOG.error(String.format("Could not fetch job for id %s", id), e);
@@ -82,7 +86,7 @@ public class CareerService implements EmberService{
         Response.Status status;
         try {
             CareerPacket careerRequest = new CareerEntity().deserialize(request);
-            JobBean jobBean = jobDao.insertJob(careerRequest.peek().toBean());
+            JobBean jobBean = jobRepo.pushJob(careerRequest.peek().toBean());
             response.push(new JobEntity(jobBean));
             status = Response.Status.CREATED;
         } catch (Exception e) {

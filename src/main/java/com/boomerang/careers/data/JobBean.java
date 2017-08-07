@@ -13,8 +13,11 @@ public class JobBean {
     private String glass;
     private String linkedin;
     private String notes;
+    private Boolean confirmed;
 
-    public JobBean(){}
+    public JobBean() {
+        this.confirmed = false;
+    }
 
     public Integer getId() {
         return id;
@@ -86,5 +89,13 @@ public class JobBean {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public Boolean getConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
     }
 }

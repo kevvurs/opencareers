@@ -3,11 +3,13 @@ package com.boomerang.careers.data;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -97,6 +99,34 @@ public class JobDao {
             LOG.error("Inserting new job failed", e);
         }
         return fetchJob(jobBean.getRef());
+    }
+
+    public void insertJobs(final List<JobBean> jobs) {
+        final int batchSize = jobs.size();
+        LOG.info(String.format("Inserting batch of %s jobs", batchSize));
+        try {
+            jdbcTemplate.batchUpdate(dataInsert, new BatchPreparedStatementSetter() {
+                @Override
+                public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                    JobBean jobBean = jobs.get(i);
+                    preparedStatement.setString(1, jobBean.getCompany());
+                    preparedStatement.setString(2, jobBean.getLocation());
+                    preparedStatement.setString(3, jobBean.getTitle());
+                    preparedStatement.setString(4, jobBean.getSalary());
+                    preparedStatement.setString(5, jobBean.getRef());
+                    preparedStatement.setString(6, jobBean.getGlass());
+                    preparedStatement.setString(7, jobBean.getLinkedin());
+                    preparedStatement.setString(8, jobBean.getNotes());
+                }
+
+                @Override
+                public int getBatchSize() {
+                    return batchSize;
+                }
+            });
+        } catch (Exception e) {
+            LOG.error("Batch insert failed during execution");
+        }
     }
 
     public JobBean patchJob(final JobBean jobBean) {
