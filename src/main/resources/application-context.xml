@@ -16,6 +16,7 @@
 
     <!-- Spring Data -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="${careers.data.url}"/>
         <property name="username" value="${careers.data.user}"/>
         <property name="password" value="${careers.data.pass}"/>

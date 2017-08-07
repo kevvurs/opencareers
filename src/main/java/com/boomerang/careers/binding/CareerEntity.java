@@ -1,29 +1,27 @@
 package com.boomerang.careers.binding;
 
-import com.boomerang.careers.data.JobBean;
-
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 public class CareerEntity extends CareerPacket {
-    private JobBean jobs;
+    private JobEntity data;
 
     public CareerEntity(){}
 
-    public JobBean getJobs() {
-        return jobs;
+    public JobEntity getData() {
+        return data;
     }
 
-    public void setJobs(JobBean jobs) {
-        this.jobs = jobs;
+    public void setData(JobEntity data) {
+        this.data = data;
     }
 
-    public JobBean peek() {
-        return this.jobs;
+    public JobEntity peek() {
+        return this.data;
     }
 
-    public void push(JobBean jobBean) {
-        this.jobs = jobBean;
+    public void push(JobEntity jobEntity) {
+        this.data = jobEntity;
     }
 
     public String serialize() {

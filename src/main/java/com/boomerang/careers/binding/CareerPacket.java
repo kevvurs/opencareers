@@ -9,9 +9,9 @@ import javax.ws.rs.core.Response;
 public abstract class CareerPacket {
     protected static final Gson GSON = new GsonBuilder().serializeNulls().create();
 
-    public abstract JobBean peek();
+    public abstract JobEntity peek();
 
-    public abstract void push(JobBean jobBean);
+    public abstract void push(JobEntity jobBean);
 
     public abstract String serialize();
 

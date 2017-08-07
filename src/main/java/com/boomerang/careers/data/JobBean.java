@@ -1,5 +1,7 @@
 package com.boomerang.careers.data;
 
+import com.boomerang.careers.binding.JobEntity;
+
 // Persistence and JSON binding
 public class JobBean {
     private Integer id;
@@ -11,6 +13,8 @@ public class JobBean {
     private String glass;
     private String linkedin;
     private String notes;
+
+    public JobBean(){}
 
     public Integer getId() {
         return id;

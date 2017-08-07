@@ -1,0 +1,24 @@
+<nav class="navbar fixed-top navbar-light" style="background-color: #BB8FCE;">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+    {{#link-to 'dash-board'}}
+      {{yield}}
+    {{/link-to}}
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    {{#if sign}}
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"
+        {{action "signIn"}}>
+        Login
+      </button>
+    {{else}}
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"
+        {{action "signOut"}}>
+        Logout
+      </button>
+    {{/if}}
+  </div>
+</nav>

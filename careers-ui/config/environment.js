@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'careers-ui',
     environment: environment,
-    rootURL: '/careers/',
+    rootURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

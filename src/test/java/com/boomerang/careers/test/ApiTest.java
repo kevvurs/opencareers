@@ -2,6 +2,7 @@ package com.boomerang.careers.test;
 
 import com.boomerang.careers.binding.CareerEntity;
 import com.boomerang.careers.binding.CareerPacket;
+import com.boomerang.careers.binding.JobEntity;
 import com.boomerang.careers.data.JobBean;
 import com.boomerang.careers.service.CareerService;
 import org.apache.log4j.Logger;
@@ -38,7 +39,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(passing, true);
     }
 
-    @Test( groups = { "central" }, priority = 1)
+    @Test( groups = { "off" }, priority = 1)
     public void testFindAll() {
         LOG.info("Testing findAll()");
         boolean passing;
@@ -90,7 +91,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         jobBean.setNotes("This is a test");
         CareerPacket request = new CareerEntity();
 
-        request.push(jobBean);
+        request.push(new JobEntity(jobBean));
 
         try {
             Response response = careerService.save(request.serialize());
@@ -121,7 +122,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         jobBean.setNotes("This is a test");
         CareerPacket request = new CareerEntity();
 
-        request.push(jobBean);
+        request.push(new JobEntity(jobBean));
 
         try {
             Response response = careerService.save("103", request.serialize());

@@ -1,0 +1,16 @@
+<nav class="navbar fixed-bottom navbar-inverse bg-inverse">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      {{#each destination as |ftrLink|}}
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            {{#link-to ftrLink.target}}
+              {{ftrLink.name}}
+            {{/link-to}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{yield}}
+</nav>

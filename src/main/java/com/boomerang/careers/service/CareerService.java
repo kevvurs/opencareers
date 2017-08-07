@@ -3,6 +3,7 @@ package com.boomerang.careers.service;
 import com.boomerang.careers.binding.CareerPacket;
 import com.boomerang.careers.binding.CareerEntity;
 import com.boomerang.careers.binding.CareerEntities;
+import com.boomerang.careers.binding.JobEntity;
 import com.boomerang.careers.data.JobBean;
 import com.boomerang.careers.data.JobDao;
 import org.apache.log4j.Logger;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.lang.annotation.*;
 
 @Path("/")
 @Component
@@ -37,14 +37,14 @@ public class CareerService implements EmberService{
 
     @GET
     @Path("/jobs")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, JSON_API})
     public Response findAll() {
         LOG.info("GET => ~/jobs");
         CareerPacket response = new CareerEntities();
         Response.Status status;
         try {
             for (JobBean jobBean : jobDao.fetchAllJobs()) {
-                response.push(jobBean);
+                response.push(new JobEntity(jobBean));
             }
             status = Response.Status.OK;
         } catch (Exception e) {
@@ -56,14 +56,14 @@ public class CareerService implements EmberService{
 
     @GET
     @Path("/jobs/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, JSON_API})
     public Response findRecord(@PathParam("id") String id) {
         LOG.info(String.format("GET => ~/jobs/%s", id));
         CareerPacket response = new CareerEntity();
         Response.Status status;
         try {
             int jobId = Integer.valueOf(id);
-            response.push(jobDao.fetchJob(jobId));
+            response.push(new JobEntity(jobDao.fetchJob(jobId)));
             status = Response.Status.OK;
         } catch (Exception e) {
             LOG.error(String.format("Could not fetch job for id %s", id), e);
@@ -74,16 +74,16 @@ public class CareerService implements EmberService{
 
     @POST
     @Path("/jobs")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, JSON_API})
+    @Consumes({MediaType.APPLICATION_JSON, JSON_API})
     public Response save(String request) {
         LOG.info("POST => ~/jobs");
         CareerPacket response = new CareerEntities();
         Response.Status status;
         try {
             CareerPacket careerRequest = new CareerEntity().deserialize(request);
-            JobBean jobBean = jobDao.insertJob(careerRequest.peek());
-            response.push(jobBean);
+            JobBean jobBean = jobDao.insertJob(careerRequest.peek().toBean());
+            response.push(new JobEntity(jobBean));
             status = Response.Status.CREATED;
         } catch (Exception e) {
             LOG.error("New job not added", e);
@@ -103,10 +103,10 @@ public class CareerService implements EmberService{
         try {
             int jobId = Integer.valueOf(id);
             CareerPacket careerRequest = new CareerEntity().deserialize(request);
-            JobBean jobBean = careerRequest.peek();
+            JobBean jobBean = careerRequest.peek().toBean();
             jobBean.setId(jobId);
             jobBean = jobDao.patchJob(jobBean);
-            response.push(jobBean);
+            response.push(new JobEntity(jobBean));
             status = Response.Status.OK;
         } catch (Exception e) {
             LOG.error(String.format("Could not update job for id %s", id), e);
@@ -117,8 +117,7 @@ public class CareerService implements EmberService{
 
     @DELETE
     @Path("/jobs/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON, JSON_API})
     public Response destroyRecord(@PathParam("id") String id) {
         LOG.info(String.format("DELETE => ~/jobs/%s", id));
         Response.Status status;

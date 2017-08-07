@@ -1,40 +1,38 @@
 package com.boomerang.careers.binding;
 
-import com.boomerang.careers.data.JobBean;
-
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CareerEntities extends CareerPacket {
-    private List<JobBean> jobs;
+    private List<JobEntity> data;
 
     public CareerEntities(){}
 
-    public List<JobBean> getJobs() {
-        if (this.jobs == null) {
-            this.jobs = new ArrayList<>();
+    public List<JobEntity> getData() {
+        if (this.data == null) {
+            this.data = new ArrayList<>();
         }
-        return this.jobs;
+        return this.data;
     }
 
-    public void setJobs(List<JobBean> jobs) {
-        this.jobs = jobs;
+    public void setData(List<JobEntity> data) {
+        this.data = data;
     }
 
-    public JobBean peek() {
-        JobBean jobBean;
-        if (this.jobs == null || this.jobs.isEmpty()) {
-            jobBean = new JobBean();
+    public JobEntity peek() {
+        JobEntity jobBean;
+        if (this.data == null || this.data.isEmpty()) {
+            jobBean = new JobEntity();
         } else {
-            jobBean = this.jobs.get(0);
+            jobBean = this.data.get(0);
         }
         return jobBean;
     }
 
-    public void push(JobBean jobBean) {
-        this.getJobs().add(jobBean);
+    public void push(JobEntity jobEntity) {
+        this.getData().add(jobEntity);
     }
 
     public String serialize() {

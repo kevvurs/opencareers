@@ -7,6 +7,7 @@ import java.lang.annotation.*;
 
 // Java Rest API for Ember.js DS.RESTAdapter
 public interface EmberService {
+    String JSON_API = "application/vnd.api+json";
 
     // GET
     Response findAll();
