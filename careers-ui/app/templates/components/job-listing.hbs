@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-header">
+    <i>Updated on</i> date-time
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">{{job.title}} - {{job.company}}</h4>
+    <p class="card-text">{{job.location}} | {{job.salary}}</p>
+    <p class="card-text">{{job.notes}}</p>
+    <br />
+    <a href="{{job.glass}}" class="badge badge-default">
+      GlassDoor
+    </a>
+    <a href="{{job.linkedin}}" class="badge badge-default">
+      Linkedin
+    </a>
+    <hr />
+    <a href="{{job.ref}}" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{{yield}}

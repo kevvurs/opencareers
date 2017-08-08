@@ -47,7 +47,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(passing, true);
     }
 
-    @Test( groups = { "central" }, priority = 2)
+    @Test( groups = { "off" }, priority = 2)
     public void testFindAll() {
         LOG.info("Testing findAll()");
         boolean passing;
@@ -83,7 +83,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(passing, true);
     }
 
-    @Test( groups = { "central" }, priority = 1)
+    @Test( groups = { "off" }, priority = 1)
     public void testSaveNew() {
         LOG.info("Testing save() for new record");
         boolean passing;
