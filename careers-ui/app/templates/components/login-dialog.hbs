@@ -1,0 +1,28 @@
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Log in</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Sign in below with your OpenCareers username and password.</p>
+        <div class="form-group">
+          <label for="username-fld" class="form-check-label"></label>
+          <input id="username-fld" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+          <label for="password-fld" class="form-check-label"></label>
+          <input id="password-fld" class="form-control" type="password">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button {{action "userLogin"}} type="button" class="btn btn-primary">Log in</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{yield}}

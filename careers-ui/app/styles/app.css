@@ -1,1 +1,37 @@
 /* OpenCareers custom CSS */
+.container-fluid.op-container {
+  padding: 55px 5px;
+  margin: 10px;
+}
+
+.container-fluid.op-banner {
+  padding: 55px 5px 20px;
+  margin: 10px;
+}
+
+.jumbotron.jumbotron-fluid.op-jumbotron {
+  background: url("http://students.washington.edu/caravk/watercolor.jpg") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  color: midnightblue;
+  text-shadow: 1px 1px #121212;
+}
+
+.container-fluid.op-cardstream {
+  width: 70%;
+}
+
+.carousel.slide.op-slide {
+  height: 100%;
+}
+
+.card.op-card {
+  margin: 8px 0;
+}
+
+.btn.btn-outline-success.op-navbtn {
+  float:right;
+  width:120px;
+}

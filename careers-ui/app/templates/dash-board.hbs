@@ -1,20 +1,18 @@
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
-    {{#each bannerList as |bannerItem|}}
-      {{#banner-item bannerItem.heading bannerItem.bgcol}}
-        {{bannerItem.description}}
-      {{/banner-item}}
-    {{/each}}
+<div class="container-fluid op-banner">
+  <div class="jumbotron jumbotron-fluid op-jumbotron">
+    <div class="container">
+      <h1 class="display-3">OpenCareers</h1>
+      <p class="lead">Social recruiting: find a new career today, with job listings shared
+        by real people. You help others find their new career too by sharing quality job posts.
+        Wishing you the best of luck!
+      </p>
+    </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  </a>
 </div>
 
-{{#each model as |job|}}
-  {{job-listing job}}
-{{/each}}
-{{outlet}}
+<div class="container-fluid op-cardstream">
+  {{#each model as |job|}}
+    {{job-listing job}}
+  {{/each}}
+  {{outlet}}
+</div>

@@ -1,14 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  sign: false,
+  userActivity: Ember.inject.service(),
+
+  signed: Ember.computed.alias('userActivity.loggedIn'),
+  showSignDlg: false,
+
   actions: {
     signIn () {
-      this.set('sign', true);
+      this.set('showSignDlg', true);
     },
 
     signOut () {
-      this.set('sign', false);
-    },
+      this.get('userActivity').exit();
+    }
   }
 });
