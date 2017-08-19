@@ -1,5 +1,4 @@
 application*.properties
-sql*.properties
 /.idea/
 *.iml
 /target/
