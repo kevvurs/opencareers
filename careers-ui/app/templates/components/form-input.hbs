@@ -1,0 +1,31 @@
+<div class="row justify-content-sm-center">
+  <div class="form-group col-sm-10">
+    <label for="{{inputId}}" class="col-form-label">
+      {{inputLabel}}
+      {{#if required}}
+        <i style="color: red"
+           class="fa fa-asterisk"
+           aria-hidden="true"></i>
+      {{/if}}
+    </label>
+    {{#if multiLine}}
+      <textarea id="{{inputId}}"
+             class="form-control"
+             rows="4"
+             maxlength="{{maxLength}}"
+             aria-describedby="{{helperId}}"
+             oninput={{action "formChanged"}}></textarea>
+    {{else}}
+      <input id="{{inputId}}"
+             class="form-control"
+             type="text"
+             maxlength="{{maxLength}}"
+             aria-describedby="{{helperId}}"
+             oninput={{action "formChanged"}}>
+    {{/if}}
+    <small id="{{helperId}}" class="form-text text-muted">
+      {{characterCount}}
+    </small>
+  </div>
+</div>
+{{yield}}

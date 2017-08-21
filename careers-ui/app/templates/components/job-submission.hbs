@@ -1,0 +1,36 @@
+<div class="modal fade" id="jobPostModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="jobPostModalLabel">Post a job</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <p>
+            Enter information about the job you want to list. All submissions are subject to
+            review before they are listed.
+          </p>
+          <form>
+            {{#each jobInfoFld as |field|}}
+              {{form-input field.id field.label field.limit field.required}}
+            {{/each}}
+            {{form-input
+              jobDescription.id
+              jobDescription.label
+              jobDescription.limit
+              jobDescription.required
+              multiLine=true}}
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{yield}}

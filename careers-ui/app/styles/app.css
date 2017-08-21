@@ -28,10 +28,20 @@
 }
 
 .card.op-card {
-  margin: 8px 0;
+  margin: 16px 0;
 }
 
 .btn.btn-outline-success.op-navbtn {
   float:right;
   width:120px;
+}
+
+.btn.btn-primary.op-add {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  text-shadow: black 1px 1px 3px;
+  box-shadow: darkgray 2px 2px 2px;
+  border-radius: 24px;
+  font-size: 24px;
 }

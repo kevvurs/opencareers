@@ -3,11 +3,11 @@
     <ul class="navbar-nav">
       {{#each destination as |ftrLink|}}
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            {{#link-to ftrLink.target}}
-              {{ftrLink.name}}
-            {{/link-to}}
-          </a>
+          {{#link-to ftrLink.target}}
+            <a class="nav-link" href="#">
+                {{ftrLink.name}}
+            </a>
+          {{/link-to}}
         </li>
       {{/each}}
     </ul>
