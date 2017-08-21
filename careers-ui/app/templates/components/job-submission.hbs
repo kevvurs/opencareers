@@ -13,21 +13,28 @@
             Enter information about the job you want to list. All submissions are subject to
             review before they are listed.
           </p>
-          <form>
-            {{#each jobInfoFld as |field|}}
-              {{form-input field.id field.label field.limit field.required}}
+          <form id="{{formId}}">
+            {{#each formFld as |field|}}
+              {{form-input
+                field.id
+                field.label
+                field.limit
+                field.required
+                field.multi}}
             {{/each}}
-            {{form-input
-              jobDescription.id
-              jobDescription.label
-              jobDescription.limit
-              jobDescription.required
-              multiLine=true}}
           </form>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <div class="btn-group">
+          <button id="prevBtn" {{action "prev"}} type="button" class="btn btn-success disabled">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> Back
+          </button>
+          <button id="nextBtn" {{action "next"}} type="button" class="btn btn-success">
+            Next <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </button>
+        </div>
         <button type="button" class="btn btn-primary">Post</button>
       </div>
     </div>

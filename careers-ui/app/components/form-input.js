@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 const FormInputComponent = Ember.Component.extend({
   inputLength: 0,
-  multiLine: false,
   selector: Ember.computed('inputId', function () {
     return '#' + this.get('inputId');
   }),
@@ -26,7 +25,7 @@ const FormInputComponent = Ember.Component.extend({
 });
 
 FormInputComponent.reopenClass({
-  positionalParams: ['inputId', 'inputLabel', 'maxLength', 'required']
+  positionalParams: ['inputId', 'inputLabel', 'maxLength', 'required', 'multiLine']
 });
 
 export default FormInputComponent;
