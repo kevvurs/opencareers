@@ -1,16 +1,19 @@
-<nav class="navbar fixed-bottom navbar-inverse bg-inverse">
-  <div class="collapse navbar-collapse" id="navbarNav">
+<div class="container">
+  <div class="row" id="navbarNav">
     <ul class="navbar-nav">
       {{#each destination as |ftrLink|}}
         <li class="nav-item">
           {{#link-to ftrLink.target}}
-            <a class="nav-link" href="#">
-                {{ftrLink.name}}
-            </a>
+            <p class="nav-link">
+              {{ftrLink.name}}
+            </p>
           {{/link-to}}
         </li>
       {{/each}}
     </ul>
   </div>
-</nav>
+  <div class="row">
+    <small style="color: linen;">Copyright &copy; 2017 Kevin Caravaggio</small>
+  </div>
+</div>
 {{yield}}

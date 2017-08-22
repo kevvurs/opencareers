@@ -1,4 +1,3 @@
-<nav style="background-color:midnightblue;display:inline;" class="navbar fixed-top navbar-expand">
   <a class="navbar-brand" style="color:linen;width:120px;" href="#">
     {{yield}}
   </a>
@@ -8,6 +7,9 @@
       Log out
     </button>
   {{else}}
+    <button class="btn btn-outline-danger op-navbtn my-2 my-sm-0">
+      Register
+    </button>
     <button {{action "signIn"}}
       class="btn btn-outline-success op-navbtn my-2 my-sm-0"
       data-toggle="modal"
@@ -15,5 +17,4 @@
       Log in
     </button>
   {{/if}}
-</nav>
 {{login-dialog}}

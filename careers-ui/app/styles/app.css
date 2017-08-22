@@ -4,20 +4,26 @@
   margin: 10px;
 }
 
+.navbar.fixed-top.navbar-expand.op-nav {
+  background-color: #0d47a1;
+  display: inline;
+}
+
 .container-fluid.op-banner {
   padding: 55px 5px 20px;
   margin: 10px;
 }
 
 .jumbotron.jumbotron-fluid.op-jumbotron {
-  background: url("http://students.washington.edu/caravk/watercolor.jpg") no-repeat center center fixed;
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  color: midnightblue;
-  text-shadow: 1px 1px #121212;
+  color: linen;
+  text-shadow: 1px 1px #182123;
 }
+
 
 .container-fluid.op-cardstream {
   width: 70%;
@@ -32,8 +38,13 @@
 }
 
 .btn.btn-outline-success.op-navbtn {
-  float:right;
-  width:120px;
+  float: right;
+  width: 120px;
+}
+
+.btn.btn-outline-danger.op-navbtn {
+  float: right;
+  width: 120px;
 }
 
 .btn.btn-primary.op-add {
