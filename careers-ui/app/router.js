@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('about');
   this.route('dash-board', {path: '/'});
   this.route('contact-us');
+  this.route('profile');
 });
 
 export default Router;

@@ -4,6 +4,10 @@
   margin: 10px;
 }
 
+.container.op-container {
+  padding: 60px;
+}
+
 .navbar.fixed-top.navbar-expand.op-nav {
   background-color: #0d47a1;
   display: inline;
@@ -26,7 +30,7 @@
 
 
 .container-fluid.op-cardstream {
-  width: 70%;
+  width: 75%;
 }
 
 .carousel.slide.op-slide {
@@ -40,6 +44,7 @@
 .btn.btn-outline-success.op-navbtn {
   float: right;
   width: 120px;
+  margin: 20px;
 }
 
 .btn.btn-outline-danger.op-navbtn {
@@ -55,4 +60,35 @@
   box-shadow: darkgray 2px 2px 2px;
   border-radius: 24px;
   font-size: 24px;
+}
+
+.row.op-stat-row {
+  margin-top: 50px;
+}
+
+div.op-stat-tile {
+  color: azure;
+  border-radius: 8px;
+  text-align: center;
+  margin: 0 15px;
+}
+
+div.op-stat-tile.blue {
+  background: cornflowerblue;
+  border: 2px solid cornflowerblue;
+}
+
+div.op-stat-tile.red {
+  background: indianred;
+  border: 2px solid indianred;
+}
+
+div.op-stat-tile.green {
+  background: mediumaquamarine;
+  border: 2px solid mediumaquamarine;
+}
+
+img.op-avatar {
+  width: 85%;
+  border-radius: 10px;
 }

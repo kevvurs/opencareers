@@ -1,0 +1,42 @@
+<div class="modal fade" id="userRegModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userRegModalLabel">User Registration</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <p>
+            Welcome to seedshare! You may sign up for an account with your email address.
+          </p>
+          <form id="{{formId}}">
+            {{#each formFld as |field|}}
+              {{form-input
+                field.id
+                field.label
+                field.limit
+                false
+                false}}
+            {{/each}}
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <div class="btn-group">
+          <button id="regPrevBtn" {{action "prev"}} type="button" class="btn btn-success disabled">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> Back
+          </button>
+          <button id="regNextBtn" {{action "next"}} type="button" class="btn btn-success">
+            Next <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </button>
+        </div>
+        <button type="button" class="btn btn-primary">Join</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{yield}}

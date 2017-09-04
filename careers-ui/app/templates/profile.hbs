@@ -1,0 +1,39 @@
+<div class="container op-container">
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="op-avatar" src="profile_pic.jpg" alt="Profile photo">
+    </div>
+    <div class="col-lg-8">
+      Engineer, creator, dreamer
+      <hr />
+      <h3>Bio</h3>
+      <p>
+        Software engineer in retail supply chain. University of Washington, class of 2018. #Husky
+        I am an ambitious programmer! I love to learn new skills and develop front and back end
+        applications. I am also interested in embedded systems, particularly private outer-space
+        travel. I'm always available for a chat.
+      </p>
+    </div>
+  </div>
+  <div class="row op-stat-row">
+    <div class="col-md-4">
+      <div class="op-stat-tile blue">
+        <h4>Followers</h4>
+        <h5>{{ model.followers }}</h5>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="op-stat-tile red">
+        <h4>Posts Shared</h4>
+        <h5>{{ model.shared }}</h5>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="op-stat-tile green">
+        <h4>Jobs Opened</h4>
+        <h5>{{ model.applied }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+{{outlet}}

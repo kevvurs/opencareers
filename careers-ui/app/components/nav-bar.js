@@ -6,13 +6,8 @@ export default Ember.Component.extend({
   tagName: 'nav',
   classNames: ['navbar', 'fixed-top', 'navbar-expand', 'op-nav'],
   signed: Ember.computed.alias('userActivity.loggedIn'),
-  showSignDlg: false,
 
   actions: {
-    signIn () {
-      this.set('showSignDlg', true);
-    },
-
     signOut () {
       this.get('userActivity').exit();
     }
